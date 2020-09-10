@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.arthur.ezshort.api.dto.UrlDTO;
 import com.arthur.ezshort.api.shortenedurl.ShortenedUrlService;
-import com.arthur.ezshort.api.shortenedurl.UrlDTO;
-import com.arthur.ezshort.api.shortenedurl.UrlUtils;
+import com.arthur.ezshort.api.utils.UrlUtils;
 
 @Transactional
 @SpringBootTest(classes = ApiApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)

@@ -1,4 +1,4 @@
-package com.arthur.ezshort.api.shortenedurl;
+package com.arthur.ezshort.api.utils;
 
 //TODO implement better hashing
 public class UrlUtils {

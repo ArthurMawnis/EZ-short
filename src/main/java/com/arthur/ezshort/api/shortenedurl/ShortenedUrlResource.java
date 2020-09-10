@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.arthur.ezshort.api.dto.UrlDTO;
+
 @RestController
 @RequestMapping("/")
 public class ShortenedUrlResource {

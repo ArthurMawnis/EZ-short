@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.arthur.ezshort.api.dto.UrlDTO;
+import com.arthur.ezshort.api.utils.UrlUtils;
+
 @Service
 public class ShortenedUrlService {
 

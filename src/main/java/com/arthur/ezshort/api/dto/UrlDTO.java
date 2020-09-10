@@ -1,8 +1,10 @@
-package com.arthur.ezshort.api.shortenedurl;
+package com.arthur.ezshort.api.dto;
 
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+
+import com.arthur.ezshort.api.shortenedurl.ShortenedUrl;
 
 import lombok.Getter;
 import lombok.Setter;
