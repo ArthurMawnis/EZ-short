@@ -14,33 +14,43 @@ import com.arthur.ezshort.api.shortenedurl.UrlUtils;
 @SpringBootTest(classes = ApiApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class LinkTest {
 
-	@Autowired
-	private ShortenedUrlService service;
+    @Autowired
+    private ShortenedUrlService service;
 
-	@Test
-	void smokeTest() {
-		Assertions.assertTrue(true, "Everything working fine!");
-	}
+    @Test
+    void smokeTest() {
+	Assertions.assertTrue(true, "Everything working fine!");
+    }
 
-	@Test
-	void should_create_new_shortenedUrl() {
-		UrlDTO dto = new UrlDTO();
-		dto.setUrl("http://www.google.com");
-		service.createShortenedUrl(dto);
-	}
+    @Test
+    void should_create_new_shortenedUrl() {
+	UrlDTO dto = new UrlDTO();
+	dto.setUrl("http://www.bigboidomain.com");
+	Assertions.assertNotNull(service.createShortenedUrl(dto));
+    }
 
-	@Test
-	void should_retrieve_valid_long_url() {
-		service.findUrl("5");
-	}
+    @Test
+    void should_retrieve_valid_long_url() {
+	final String URL = "https://www.huuuuuuuuuuuuuuuuuuuge.com";
 
-	@Test
-	void should_encode_and_decode_id() {
-		final Long id = 258L;
+	UrlDTO dto = new UrlDTO();
+	dto.setUrl(URL);
+	final String shortenedUrl = service.createShortenedUrl(dto);
+	final String[] split = shortenedUrl.split("/");
+	// shortened url is made of baseUrl + encoded id;
+	// the magical 'split[3]' refers to the id's position
+	final String longUrl = service.findUrl(split[3]);
 
-		final String hex = UrlUtils.encode(id);
-		final Long result = UrlUtils.decode(hex);
+	Assertions.assertEquals(URL, longUrl);
+    }
 
-		Assertions.assertEquals(id, result);
-	}
+    @Test
+    void should_encode_and_decode_id() {
+	final Long id = 258L;
+
+	final String hex = UrlUtils.encode(id);
+	final Long result = UrlUtils.decode(hex);
+
+	Assertions.assertEquals(id, result);
+    }
 }
