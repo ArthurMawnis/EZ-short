@@ -1,5 +1,7 @@
 package com.arthur.ezshort.api;
 
+import static org.assertj.core.api.Assertions.fail;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,11 @@ class LinkTest {
     void should_create_new_shortenedUrl() {
 	UrlDTO dto = new UrlDTO();
 	dto.setUrl("http://www.bigboidomain.com");
-	Assertions.assertNotNull(service.createShortenedUrl(dto));
+	try {
+	    Assertions.assertNotNull(service.createShortenedUrl(dto));
+	} catch (InvalidUrlException e) {
+	   fail(e.getMessage());
+	}
     }
 
     @Test
