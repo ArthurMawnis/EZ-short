@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.arthur.ezshort.api.dto.UrlDTO;
+import com.arthur.ezshort.api.exceptions.InvalidUrlException;
 import com.arthur.ezshort.api.shortenedurl.ShortenedUrlService;
 import com.arthur.ezshort.api.utils.UrlUtils;
 
@@ -27,6 +28,15 @@ class LinkTest {
 	UrlDTO dto = new UrlDTO();
 	dto.setUrl("http://www.bigboidomain.com");
 	Assertions.assertNotNull(service.createShortenedUrl(dto));
+    }
+
+    @Test
+    void should_fail_to_create_new_shortenedUrl() {
+	UrlDTO dto = new UrlDTO();
+	dto.setUrl("ht://www..site?yes");
+
+	Assertions.assertThrows(InvalidUrlException.class, () -> service.createShortenedUrl(dto),
+		"invalid long url should throw a exception");
     }
 
     @Test
