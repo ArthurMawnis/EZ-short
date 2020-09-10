@@ -6,6 +6,10 @@ public class UrlUtils {
     private UrlUtils() {
     }
 
+    public static boolean isValid(final String longUrl) {
+	return false;
+    }
+
     public static String encode(Long id) {
 	return Long.toHexString(id);
     }
