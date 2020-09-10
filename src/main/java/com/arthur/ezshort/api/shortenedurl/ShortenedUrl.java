@@ -19,18 +19,18 @@ import lombok.Setter;
 @Setter
 public class ShortenedUrl implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false)
-	private Long id;
-	@Column(name = "or_url")
-	private String originalUrl;
-	@Column(name = "token")
-	private String token;
-	@Column(name = "st_dt")
-	private Date startDate;
-	@Column(name = "en_dt")
-	private Date endDate;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
+    @Column(name = "or_url")
+    private String originalUrl;
+    @Column(name = "token")
+    private String token;
+    @Column(name = "st_dt")
+    private Date startDate;
+    @Column(name = "en_dt")
+    private Date endDate;
 }

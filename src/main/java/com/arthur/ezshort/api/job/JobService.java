@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class JobService {
 
-	void cron() {
-		// TODO
-	}
+    void cron() {
+	// TODO
+    }
 }

@@ -19,21 +19,18 @@ import com.arthur.ezshort.api.dto.UrlDTO;
 @RequestMapping("/")
 public class ShortenedUrlResource {
 
-	@Autowired
-	private ShortenedUrlService service;
+    @Autowired
+    private ShortenedUrlService service;
 
-	@PostMapping
-	public ResponseEntity<String> create(@RequestBody final UrlDTO req) {
-		return ResponseEntity.status(HttpStatus.OK)
-				.body(service.createShortenedUrl(req));
-	}
+    @PostMapping
+    public ResponseEntity<String> create(@RequestBody final UrlDTO req) {
+	return ResponseEntity.status(HttpStatus.OK).body(service.createShortenedUrl(req));
+    }
 
-	@GetMapping(path = "{token}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> redirect(
-			@PathVariable(name = "token") String token) {
-		final String originalUrl = service.findUrl(token);
-		return ResponseEntity.status(HttpStatus.FOUND)
-				.location(URI.create(originalUrl)).build();
-	}
+    @GetMapping(path = "{token}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> redirect(@PathVariable(name = "token") String token) {
+	final String originalUrl = service.findUrl(token);
+	return ResponseEntity.status(HttpStatus.FOUND).location(URI.create(originalUrl)).build();
+    }
 
 }
