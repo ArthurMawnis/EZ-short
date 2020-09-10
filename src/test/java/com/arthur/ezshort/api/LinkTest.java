@@ -31,7 +31,7 @@ class LinkTest {
     }
 
     @Test
-    void should_fail_to_create_new_shortenedUrl() {
+    void should_throw_InvalidUrlException_when_invalid_longUrl() {
 	UrlDTO dto = new UrlDTO();
 	dto.setUrl("ht://www..site?yes");
 
