@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.arthur.ezshort.api.dto.UrlDTO;
+import com.arthur.ezshort.api.dto.CreateShortnedUrlRequest;
 import com.arthur.ezshort.api.exceptions.InvalidUrlException;
 import com.arthur.ezshort.api.shortenedurl.ShortenedUrlService;
 import com.arthur.ezshort.api.utils.UrlUtils;
@@ -27,7 +27,7 @@ class LinkTest {
 
     @Test
     void should_create_new_shortenedUrl() {
-	UrlDTO dto = new UrlDTO();
+	CreateShortnedUrlRequest dto = new CreateShortnedUrlRequest();
 	dto.setUrl("http://www.bigboidomain.com");
 	try {
 	    Assertions.assertNotNull(service.createShortenedUrl(dto));
@@ -38,7 +38,7 @@ class LinkTest {
 
     @Test
     void should_throw_InvalidUrlException_when_invalid_longUrl() {
-	UrlDTO dto = new UrlDTO();
+	CreateShortnedUrlRequest dto = new CreateShortnedUrlRequest();
 	dto.setUrl("ht://www..site?yes");
 
 	Assertions.assertThrows(InvalidUrlException.class, () -> service.createShortenedUrl(dto),
@@ -49,7 +49,7 @@ class LinkTest {
     void should_retrieve_valid_long_url() {
 	final String URL = "https://www.huuuuuuuuuuuuuuuuuuuge.com";
 
-	UrlDTO dto = new UrlDTO();
+	CreateShortnedUrlRequest dto = new CreateShortnedUrlRequest();
 	dto.setUrl(URL);
 	final String shortenedUrl = service.createShortenedUrl(dto);
 	final String[] split = shortenedUrl.split("/");

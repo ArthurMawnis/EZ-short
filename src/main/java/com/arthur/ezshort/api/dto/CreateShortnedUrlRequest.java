@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UrlDTO implements Serializable {
+public class CreateShortnedUrlRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

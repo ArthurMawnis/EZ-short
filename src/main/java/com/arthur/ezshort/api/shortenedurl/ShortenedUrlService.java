@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.arthur.ezshort.api.dto.UrlDTO;
+import com.arthur.ezshort.api.dto.CreateShortnedUrlRequest;
 import com.arthur.ezshort.api.exceptions.InvalidUrlException;
 import com.arthur.ezshort.api.utils.UrlUtils;
 
@@ -18,11 +18,11 @@ public class ShortenedUrlService {
     private String BASE_URL;
 
     /**
-     * @param {@link UrlDTO} with the original url
+     * @param {@link CreateShortnedUrlRequest} with the original url
      * @return shortened url
      * @throws InvalidUrlException
      */
-    public String createShortenedUrl(UrlDTO req) {
+    public String createShortenedUrl(CreateShortnedUrlRequest req) {
 	if (!UrlUtils.isValid(req.getUrl())) {
 	    throw new InvalidUrlException("This url is not in a valid format.");
 	}

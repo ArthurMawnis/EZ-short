@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.arthur.ezshort.api.dto.UrlDTO;
+import com.arthur.ezshort.api.dto.CreateShortnedUrlRequest;
 
 @RestController
 @RequestMapping("/")
@@ -23,7 +23,7 @@ public class ShortenedUrlResource {
     private ShortenedUrlService service;
 
     @PostMapping
-    public ResponseEntity<String> create(@RequestBody final UrlDTO req) {
+    public ResponseEntity<String> create(@RequestBody final CreateShortnedUrlRequest req) {
 	return ResponseEntity.status(HttpStatus.OK).body(service.createShortenedUrl(req));
     }
 
